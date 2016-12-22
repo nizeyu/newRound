@@ -1,4 +1,5 @@
 //Method 1
+//too slow
 public class Solution
 {
     public int majorityElement(int[] nums)
