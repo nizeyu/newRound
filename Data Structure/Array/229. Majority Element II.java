@@ -41,6 +41,7 @@ public class Solution
         
         for(int i = 0; i < nums.length; i++)
         {
+            //先考虑给有票的人加票
             if(nums[i] == number1)
                 count1++;
             else if(nums[i] == number2)
