@@ -14,14 +14,14 @@ public class Solution
     
     private void combinationSum(int[] candidates, int target, int start, List<Integer> tempList, List<List<Integer>> result)
     {
-        if(target == 0)
+        if(target < 0)
+            return;
+        else if(target == 0)
             result.add(new ArrayList<>(tempList));
         else
         {
             for(int i = start; i < candidates.length; i++)
             {
-                if(target < candidates[i])
-                    return;
                 tempList.add(candidates[i]);
                 combinationSum(candidates, target - candidates[i], i, tempList, result);
                 // not i + 1 because we can reuse same elements
