@@ -1,3 +1,4 @@
+//https://www.hrwhisper.me/leetcode-guess-number-higher-lower-ii/
 public class Solution
 {
     public int getMoneyAmount(int n)
