@@ -1,3 +1,4 @@
+//Method 1: Heap
 public class Solution
 {
     public int kthSmallest(int[][] matrix, int k)
@@ -15,3 +16,5 @@ public class Solution
         return min;
     }
 }
+
+//Method 2: Binary Search
