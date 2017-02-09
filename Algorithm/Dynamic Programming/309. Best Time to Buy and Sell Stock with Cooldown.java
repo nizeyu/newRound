@@ -1,3 +1,4 @@
+//http://www.voidcn.com/blog/u012468264/article/p-5755968.html
 public class Solution
 {
     public int maxProfit(int[] prices)
