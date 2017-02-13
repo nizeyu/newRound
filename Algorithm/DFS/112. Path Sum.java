@@ -33,7 +33,6 @@ public class Solution
                 sumValue.push(node.right.val + val);
             }
                 
-            
             if(node.left != null)
             {
                 stack.push(node.left);
