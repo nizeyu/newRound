@@ -9,6 +9,7 @@ public class Solution {
             for(int j = 0; j < grid[0].length; j++) {
                 if(grid[i][j] == 1) {
                     res += 4;
+                    //上下左右有island, res-1
                     if(i > 0 && grid[i-1][j] == 1)
                         res -= 1;
                     if(i < grid.length - 1 && grid[i+1][j] == 1)
