@@ -1,4 +1,27 @@
-Method 1
+//My Solution
+public class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        if(nums == null || nums.length == 0)
+            return new ArrayList<>();
+        
+        List<Integer> res = new ArrayList<>();
+        for(int i = 0; i < nums.length; i++) {
+            int index = Math.abs(nums[i])-1;
+            if(nums[index] > 0) {
+                nums[index] = -nums[index];
+            }
+        } 
+        
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] > 0)
+                res.add(i+1);
+        }
+        
+        return res;
+    }
+}
+
+//Method 1
 public class Solution
 {
     public List<Integer> findDisappearedNumbers(int[] nums)
@@ -21,7 +44,7 @@ public class Solution
 }
 
 
-Mehod 2: too slow
+//Mehod 2: too slow
 public class Solution
 {
     public List<Integer> findDisappearedNumbers(int[] nums)
