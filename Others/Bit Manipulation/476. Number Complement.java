@@ -1,4 +1,4 @@
-//My Solution
+//My Solution 1
 public class Solution {
     public int findComplement(int num) {
         int helper1 = 1;//to indicate the first "1"
@@ -17,5 +17,22 @@ public class Solution {
                 break;
         }
         return num;
+    }
+}
+
+//My Solution 2:
+public class Solution {
+    public int findComplement(int num) {
+        int res = 0;
+        int i = 0;
+        while(num != 0) {
+            int temp = num & 1;
+            temp ^= 1;
+            temp <<= i;
+            res |= temp;
+            num >>= 1;
+            i++;
+        }
+        return res;
     }
 }
