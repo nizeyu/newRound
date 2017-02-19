@@ -1,14 +1,16 @@
-public class Solution
-{
-    public char findTheDifference(String s, String t)
-    {
-        char c = 0;
-        for(int i = 0; i < s.length(); i++)
-            c ^= s.charAt(i);
+//My Solution
+public class Solution {
+    public char findTheDifference(String s, String t) {
         
-        for(int j = 0; j < t.length(); j++)
-            c ^= t.charAt(j);
+        char res = 0;
+        for(int i = 0; i < s.length(); ++i) {
+            res ^= s.charAt(i);
+        }
         
-        return c;
+        for(int i = 0; i < t.length(); ++i) {
+            res ^= t.charAt(i);
+        }
+        
+        return res;
     }
 }
