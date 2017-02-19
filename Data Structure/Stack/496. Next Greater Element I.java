@@ -1,4 +1,28 @@
-//My Solution: Hash Map  ?Stack 怎么做？
+//Method: Stack
+public class Solution {
+    public int[] nextGreaterElement(int[] findNums, int[] nums) {
+        if(findNums == null || findNums.length == 0 || nums == null || nums.length == 0)
+            return new int[0];
+        
+        int[] res = new int[findNums.length];
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<Integer> stack = new Stack<>();
+        for(int num : nums) {
+            while(!stack.isEmpty() && stack.peek() < num)
+                map.put(stack.pop(), num);
+            
+            stack.push(num);
+        }
+        
+        for(int i = 0; i < findNums.length; i++) {
+            res[i] = map.getOrDefault(findNums[i], -1);
+        }
+        
+        return res;
+    }
+}
+
+//My Solution: Hash Map
 public class Solution {
     public int[] nextGreaterElement(int[] findNums, int[] nums) {
         if(findNums == null || findNums.length == 0 || nums == null || nums.length == 0)
