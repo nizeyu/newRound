@@ -1,3 +1,4 @@
+//My Solution:
 public class Solution {
     public String[] findRelativeRanks(int[] nums) {
         if(nums == null || nums.length == 0)
