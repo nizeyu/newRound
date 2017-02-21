@@ -1,26 +1,14 @@
 //Method 1
 //too slow
-public class Solution
-{
-    public int majorityElement(int[] nums)
-    {
-        int majority = 0;
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i = 0; i < nums.length; i++)
-        {
-            if(map.containsKey(nums[i]))
-                map.put(nums[i], map.get(nums[i]) + 1);
-            else
-                map.put(nums[i], 1);
+public class Solution {
+    public int majorityElement(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+            if(map.get(num) > nums.length / 2)
+                return num;
         }
-        
-        for(int key: map.keySet())
-        {
-            if(map.get(key) > nums.length / 2)
-                majority = key;
-        }
-        
-        return majority;
+        return -1;
     }
 }
 
