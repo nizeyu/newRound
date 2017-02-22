@@ -1,28 +1,26 @@
-public class Solution
-{
-    public boolean isHappy(int n)
-    {
-        if(n < 1)
-            return false;
+//My Solution:
+public class Solution {
+    public boolean isHappy(int n) {
         
-        HashSet<Integer> set = new HashSet<>();
-            
-        while(!set.contains(n))
-        {
-            set.add(n);
-            int happy = 0;
-            while(n > 0)
-            {
-                happy += (n % 10) * (n % 10); 
+        Set<Integer> set = new HashSet<>();
+        
+        while(true) {
+            int sum = 0;
+            while(n != 0) {
+                sum += Math.pow(n % 10, 2);
                 n /= 10;
             }
             
-            if(happy == 1)
+            if(sum == 1)
                 return true;
-            else
-                n = happy;
+            
+            if(set.contains(sum))
+                return false;
+            else {
+                set.add(sum);
+                n = sum;
+            }
+                
         }
-        
-        return false;
     }
 }
