@@ -24,7 +24,7 @@ public class NumArray
  * int param_1 = obj.sumRange(i,j);
  */
  
- Method 2:
+ //My Solution: Method 2:
  public class NumArray
 {
     int[] dp;
