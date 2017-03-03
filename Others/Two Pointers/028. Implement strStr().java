@@ -1,4 +1,4 @@
-//My Soluton
+//My Soluton: Brute Force
 public class Solution {
     public int strStr(String haystack, String needle) {
         if(haystack.length() == 0 && needle.length() == 0)
