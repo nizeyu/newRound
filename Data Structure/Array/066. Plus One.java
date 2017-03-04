@@ -5,16 +5,8 @@ public class Solution {
             return new int[0];
     
         int carry = 0;
-        int digit = digits[digits.length - 1] + 1;
-        if(digit == 10) {
-            digits[digits.length - 1] = 0;
-            carry = 1;
-        } else {
-            digits[digits.length - 1] = digit;
-            return digits;
-        }
         
-        for(int i = digits.length - 2; i >= 0; i--) {
+        for(int i = digits.length - 1; i >= 0; i--) {
             if(digits[i] + 1 < 10) {
                 digits[i] += 1;
                 carry = 0;
