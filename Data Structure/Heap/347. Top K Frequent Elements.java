@@ -1,3 +1,30 @@
+//My Solution
+public class Solution {
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        List<Integer> res = new ArrayList<>();
+        if(nums == null || nums.length == 0 || k < 1)
+            return res;
+        
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int num : nums) 
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        
+        Queue<Integer> q = new PriorityQueue<>(k, new Comparator<Integer>(){
+            public int compare(Integer a, Integer b) {
+                return map.get(b) - map.get(a);
+            }
+        });
+        
+        for(int key : map.keySet())
+            q.offer(key);
+        
+        for(int i = 0; i < k; i++)
+            res.add(q.poll());
+        
+        return res;
+    }
+}
+
 public class Solution
 {
     public List<Integer> topKFrequent(int[] nums, int k)
