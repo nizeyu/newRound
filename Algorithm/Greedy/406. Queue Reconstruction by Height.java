@@ -1,3 +1,25 @@
+//Method 1
+public class Solution {
+    public int[][] reconstructQueue(int[][] people) {
+        if(people == null || people.length == 0)
+            return new int[0][0];
+        
+        Arrays.sort(people, new Comparator<int[]>(){
+            public int compare(int[] a, int[] b) {
+                return a[0] == b[0] ? a[1] - b[1] : b[0] - a[0];
+            }
+        });
+        
+        List<int[]> res = new ArrayList<>();
+        for(int[] cur : people) {
+            res.add(cur[1], cur);
+        }
+        
+        return res.toArray(new int[people.length][]);
+    }
+}
+
+//Method 2
 public class Solution
 {
     public int[][] reconstructQueue(int[][] people)
