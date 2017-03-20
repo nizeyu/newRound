@@ -1,27 +1,26 @@
-public class Solution
-{
-    public int[] singleNumber(int[] nums)
-    {
-        if(nums == null || nums.length == 0)
-            return new int [0];
+public class Solution {
+    public int[] singleNumber(int[] nums) {
+        int AxorB = 0;
+        for(int i = 0; i < nums.length; ++i)
+            AxorB ^= nums[i];
         
-        int x1XORx2 = 0;
-        for(int num: nums)
-            x1XORx2 ^= num;
+        // int x = 1;
+        // while((AxorB & x) == 0) {
+        //     x <<= 1;
+        // }
         
-        int last1Bit = x1XORx2 - (x1XORx2 & (x1XORx2 - 1));
+        // Get its last set bit
+        AxorB &= -AxorB;
         
-        int single1 = 0;
-        int single2 = 0;
-        
-        for(int x: nums)
-        {
-            if((x & last1Bit) == 0 )
-                single1 ^= x;
+        int num0 = 0;
+        int num1 = 0;
+        for(int i = 0; i < nums.length; ++i) {
+            if((AxorB & nums[i]) == 0)
+                num0 ^= nums[i];
             else
-                single2 ^= x;
+                num1 ^= nums[i];
         }
         
-        return new int[] {single1, single2};
+        return new int[] {num0, num1};
     }
 }
