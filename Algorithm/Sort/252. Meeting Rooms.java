@@ -19,12 +19,10 @@ public class Solution {
             }
         });
         
-        int preStart = intervals[0].start;
         int preEnd = intervals[0].end;
         for(int i = 1; i < intervals.length; i++) {
-            if(intervals[i].start == preStart || intervals[i].start < preEnd)
+            if(intervals[i].start < preEnd)
                 return false;
-            preStart = intervals[i].start;
             preEnd = intervals[i].end;
         }
         return true;
