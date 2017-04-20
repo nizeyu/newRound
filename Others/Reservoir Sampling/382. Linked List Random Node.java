@@ -6,28 +6,29 @@
  *     ListNode(int x) { val = x; }
  * }
  */
-public class Solution
-{
-    private ListNode head;
-    private Random random;
+public class Solution {
+
+    ListNode head;
+    Random randomGenerator;
     /** @param head The linked list's head.
         Note that the head is guaranteed to be not null, so it contains at least one node. */
-    public Solution(ListNode head)
-    {
+    public Solution(ListNode head) {
         this.head = head;
-        random = new Random();
+        this.randomGenerator = new Random();
     }
     
     /** Returns a random node's value. */
-    public int getRandom()
-    {
-        int result = 0;
-        ListNode p = head;
-        for(int i = 1; p != null; i++, p = p.next)
-            if(random.nextInt(i) == 0)
-                result = p.val;
-
-        return result;
+    public int getRandom() {
+        int res = 0;
+        ListNode cur = head;
+        
+        for(int i = 1; cur != null; ++i) {
+            if(randomGenerator.nextInt(i) == 0) {
+                res = cur.val;
+            }
+            cur = cur.next;
+        }
+        return res;
     }
 }
 
