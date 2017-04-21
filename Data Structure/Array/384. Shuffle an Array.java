@@ -1,26 +1,21 @@
-public class Solution
-{
+public class Solution {
     private int[] nums;
-    private static Random r = new Random();
-    public Solution(int[] nums)
-    {
+    private static Random r;
+    public Solution(int[] nums) {
         this.nums = nums;
+        r = new Random();
     }
     
     /** Resets the array to its original configuration and return it. */
-    public int[] reset()
-    {
+    public int[] reset() {
         return nums;
     }
     
     /** Returns a random shuffling of the array. */
-    //FischerYatesInPlace shuffling
-    public int[] shuffle()
-    {
+    public int[] shuffle() {
         int[] n = nums.clone();
         
-        for(int i = nums.length-1; i >= 0; i--)
-        {
+        for(int i = nums.length-1; i >= 0; --i) {
             int pick = r.nextInt(i+1);
             int temp = n[pick];
             n[pick] = n[i];
