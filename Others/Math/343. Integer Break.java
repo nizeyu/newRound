@@ -17,8 +17,7 @@ public class Solution
 
 
 //Method 2: O(n) DP
-public class Solution
-{
+public class Solution {
     public int integerBreak(int n)
     {
         if(n <= 3)
@@ -34,4 +33,3 @@ public class Solution
         return dp[n];
     }
 }
-
