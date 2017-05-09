@@ -1,22 +1,19 @@
-public class Solution
-{
-    public List<Integer> grayCode(int n)
-    {
-        List<Integer> result = new ArrayList<>();
-        result.add(0);
+public class Solution {
+    public List<Integer> grayCode(int n) {
+        List<Integer> res = new ArrayList<>();
+        res.add(0);
         if(n == 0)
-            return result;
-        if(n == 1)
-        {
-            result.add(1);
-            return result;
+            return res;
+        if(n == 1) {
+            res.add(1);
+            return res;
         }
         
         int prefix = 1 << (n-1);
-        result = grayCode(n-1);
-        for(int i = result.size() - 1; i >= 0; i--)
-            result.add(prefix + result.get(i));
+        res = grayCode(n-1);
+        for(int i = res.size() - 1; i >= 0; i--)
+            res.add(prefix + res.get(i));
         
-        return result;
+        return res;
     }
 }
