@@ -7,10 +7,8 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution
-{
-    public List<Integer> rightSideView(TreeNode root)
-    {
+public class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         
         if(root == null)
@@ -19,11 +17,9 @@ public class Solution
         Queue<TreeNode> q = new LinkedList<>();
         q.offer(root);
         
-        while(!q.isEmpty())
-        {
+        while(!q.isEmpty()) {
             int size = q.size();
-            for(int i = 0; i < size; i++)
-            {
+            for(int i = 0; i < size; i++) {
                 TreeNode node = q.poll();
                 
                 if(i == 0)
