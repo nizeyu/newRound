@@ -7,28 +7,23 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution
-{
-    public void flatten(TreeNode root)
-    {
+public class Solution {
+    public void flatten(TreeNode root) {
         if(root == null)
             return;
         
         Stack<TreeNode> stack = new Stack<>();
         TreeNode p = root;
         
-        while(p != null)
-        {
+        while(p != null) {
             if(p.right != null)
                 stack.push(p.right);
                 
-            if(p.left != null)
-            {
+            if(p.left != null) {
                 p.right = p.left;
                 p.left = null;
             }
-            else
-            {
+            else {
                 if(!stack.isEmpty())
                     p.right = stack.pop();
             }
