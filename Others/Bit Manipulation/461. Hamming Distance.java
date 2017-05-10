@@ -1,4 +1,4 @@
-My Solution
+//My Solution
 public class Solution {
     public int hammingDistance(int x, int y) {
         int xXORy = x ^ y;
@@ -13,7 +13,7 @@ public class Solution {
     }
 }
 
-Method 1
+//Method 1
 public class Solution
 {
     public int hammingDistance(int x, int y)
@@ -27,7 +27,7 @@ public class Solution
     }
 }
 
-Method 2
+//Method 2
 public class Solution
 {
     public int hammingDistance(int x, int y)
