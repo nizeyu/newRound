@@ -14,17 +14,17 @@ public class Solution {
         if(root == null)
             return res;
             
-        tilt(root);
+        postOrder(root);
         
         return res;
     }
     
-    private int tilt(TreeNode node) {
+    private int postOrder(TreeNode node) {
         if(node == null)
             return 0;
             
-        int left = tilt(node.left);
-        int right = tilt(node.right);
+        int left = postOrder(node.left);
+        int right = postOrder(node.right);
         res += Math.abs(left - right);
         
         return node.val + left + right;
