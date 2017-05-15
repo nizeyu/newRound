@@ -1,38 +1,32 @@
-public class Solution
-{
-    public int[] intersect(int[] nums1, int[] nums2)
-    {
-        if(nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0)
-            return new int [0];
+//Method 1
+public class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        if(nums1.length == 0 || nums2.length == 0)
+            return new int[0];
         
+        List<Integer> list = new ArrayList<>();
         Arrays.sort(nums1);
         Arrays.sort(nums2);
         
-        List<Integer> list = new ArrayList<>();
-        
-        int p = 0;
-        int q = 0;
-        
-        while(p < nums1.length && q < nums2.length)
-        {
-            if(nums1[p] < nums2[q])
-                p++;
-            else if(nums1[p] > nums2[q])
-                q++;
-            else
-            {
-                list.add(nums1[p]);
-                p++;
-                q++;
+        int i = 0;
+        int j = 0;
+        while(i < nums1.length && j < nums2.length) {
+            if(nums1[i] == nums2[j]) {
+                list.add(nums1[i]);
+                i++;
+                j++;
             }
+            else if(nums1[i] > nums2[j])
+                j++;
+            else
+                i++;
         }
         
-        int [] result = new int [list.size()];
-        int i = 0;
+        int[] res = new int[list.size()];
+        int k = 0;
+        for(int num : list) 
+            res[k++] = num;
         
-        for(int x: list)
-            result[i++] = x;
-        
-        return result;
+        return res;
     }
 }
