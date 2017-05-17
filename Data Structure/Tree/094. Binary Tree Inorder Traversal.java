@@ -1,4 +1,4 @@
-//My Solution
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8,6 +8,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+//Method 0: Non-Recursion (Recommend)
 public class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
@@ -22,34 +23,19 @@ public class Solution {
                 stack.push(p);
                 p = p.left;
             }
-            
             p = stack.pop();
             res.add(p.val);
             p = p.right;
         }
-        
         return res;
     }
 }
 
-
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+//Method 1: Traverse
 public class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if(root == null)
-            return res;
-        
-        inorder(root, res);
-        
+        inorder(root, res); 
         return res;
     }
     
