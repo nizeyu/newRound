@@ -10,32 +10,22 @@
  //Method 0: Non-Recursion (Recommend)
  public class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode prev = null;
-        TreeNode curr = root;
-        
+        LinkedList<Integer> res = new LinkedList<>();
         if(root == null)
             return res;
         
-        stack.push(root);
-        while(!stack.isEmpty()) {
-            curr = stack.peek();
-            if(prev == null || prev.left == curr || prev.right == curr) {
-                if (curr.left != null) {
-                    stack.push(curr.left);
-                } else if (curr.right != null) {
-                    stack.push(curr.right);
-                }
-            } else if(curr.left == prev) {
-                if (curr.right != null) {
-                    stack.push(curr.right);
-                }
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode p = root;
+        
+        while(!stack.isEmpty() || p != null) {
+            if(p != null) {
+                stack.push(p);
+                res.addFirst(p.val);
+                p = p.right;
             } else {
-                res.add(curr.val);
-                stack.pop();
+                TreeNode node = stack.pop();
+                p = node.left;
             }
-            prev = curr;
         }
         return res;
     }
