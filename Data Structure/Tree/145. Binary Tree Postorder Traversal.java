@@ -30,6 +30,28 @@
         return res;
     }
 }
+
+public class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        LinkedList<Integer> res = new LinkedList<>();
+        if(root == null)
+           return res;
+
+		      Stack<TreeNode> stack = new Stack<>();
+		      TreeNode p = root;
+	 	     while(!stack.isEmpty() || p != null) {
+			         while(p != null) {
+            stack.push(p);
+            res.addFirst(p.val);
+            p = p.right;
+			     }
+
+        p = stack.pop();
+        p = p.left;
+		      }
+		      return res;
+    }
+}
  
  //Method 1: Traverse
  public class Solution {
