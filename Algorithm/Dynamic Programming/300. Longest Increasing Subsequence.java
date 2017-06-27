@@ -33,7 +33,7 @@ public class Solution {
     }
 }
 
-// Brute Force : 2 ^ n * n
+// Brute Force : （2 ^ n） * n
 public class Solution {
     int max = 1;
     public int lengthOfLIS(int[] nums) {
