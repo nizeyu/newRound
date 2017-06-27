@@ -1,4 +1,4 @@
-// Brute Force
+// Brute Force : 2 ^ n
 public class Solution {
     int max = 1;
     public int lengthOfLIS(int[] nums) {
