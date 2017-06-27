@@ -1,4 +1,39 @@
-// Brute Force : 2 ^ n
+// DP
+public class Solution {
+    public int lengthOfLIS(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+        
+        for (int i = 1; i < dp.length; i++) {
+            int max = 1;
+            boolean flag = false;
+            for(int j = i-1; j >= 0; j--) {
+                if (nums[i] > nums[j]) {
+                    max = Math.max(dp[j], max);
+                    flag = true;
+                }
+            }
+            
+            if (flag) {
+                dp[i] = max + 1;
+            } else {
+                dp[i] = 1;
+            }
+        }
+        
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < dp.length; i++) {
+            max = Math.max(max, dp[i]);
+        }
+        return max;
+    }
+}
+
+// Brute Force : 2 ^ n * n
 public class Solution {
     int max = 1;
     public int lengthOfLIS(int[] nums) {
