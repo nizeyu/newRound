@@ -1,3 +1,120 @@
+// Improved: DP
+public class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if (coins == null || coins.length == 0) {
+            return -1;
+        }
+        if (amount == 0) {
+            return 0;
+        }
+        
+        int[] dp = new int[amount+1];
+        for (int i = 1; i < dp.length; i++) {
+            dp[i] = Integer.MAX_VALUE;
+        }
+        
+        // traverse the coins
+        for (int i = 0; i < coins.length; i++) {
+            // for each number of each typy coins, traverse the dp, find different combinations, modify the dp[]
+            
+            // add a to corresponding location in dp
+            if (coins[i] < dp.length) {
+                dp[coins[i]] = Math.min(dp[coins[i]], 1);
+            }
+            
+            for (int j = 0; j < dp.length; j++) {
+                if (dp[j] != Integer.MAX_VALUE && j < dp.length - coins[i]) {
+                    dp[j+coins[i]] = Math.min(dp[j+coins[i]], 1 + dp[j]);
+                }
+            }
+        }
+        
+        if (dp[dp.length - 1] == Integer.MAX_VALUE) {
+            return -1;
+        }
+        
+        return dp[dp.length - 1];
+    }
+}
+
+// My Solution : DP
+public class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if (coins == null || coins.length == 0) {
+            return -1;
+        }
+        
+        int[] dp = new int[amount+1];
+        for (int i = 1; i < dp.length; i++) {
+            dp[i] = Integer.MAX_VALUE;
+        }
+        
+        // traverse the coins
+        for (int i = 0; i < coins.length; i++) {
+            // for each number of each typy coins, traverse the dp, find different combinations, modify the dp[]
+            int a = coins[i];
+            int count = 1;
+            while (a <= amount) {
+                for (int j = dp.length - 1; j >= 0; j--) {
+                    if (dp[j] != Integer.MAX_VALUE && j+a < dp.length) {
+                        dp[j+a] = Math.min(dp[j+a], count + dp[j]);
+                    }
+                }
+                
+                // add a to corresponding location in dp
+                dp[a] = Math.min(dp[a], count);
+                a += coins[i];
+                count++;
+            }
+        }
+        
+        if (dp[dp.length - 1] == Integer.MAX_VALUE) {
+            return -1;
+        }
+        
+        return dp[dp.length - 1];
+    }
+}
+
+// Similar : 0/1 背包
+public class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if (coins == null || coins.length == 0) {
+            return -1;
+        }
+        
+        int[] dp = new int[amount+1];
+        for (int i = 1; i < dp.length; i++) {
+            dp[i] = Integer.MAX_VALUE;
+        }
+        
+        // traverse the coins
+        for (int i = 0; i < coins.length; i++) {
+            // for each number of each typy coins, traverse the dp, find different combinations, modify the dp[]
+            int a = coins[i];
+            int count = 1;
+            while (a <= amount) {
+                for (int j = dp.length - 1; j >= 0; j--) {
+                    if (dp[j] != Integer.MAX_VALUE && j+a < dp.length) {
+                        dp[j+a] = Math.min(dp[j+a], count + dp[j]);
+                    }
+                }
+                
+                // add a to corresponding location in dp
+                dp[a] = Math.min(dp[a], count);
+                a += coins[i];
+                count++;
+            }
+        }
+        
+        if (dp[dp.length - 1] == Integer.MAX_VALUE) {
+            return -1;
+        }
+        
+        return dp[dp.length - 1];
+    }
+}
+
 // Brute Force 1: DFS
 public class Solution {
     public int min = Integer.MAX_VALUE;
@@ -79,32 +196,5 @@ public class Solution {
                 amount += i * coins[start];
             }
         }
-    }
-}
-
-public class Solution
-{
-    public int coinChange(int[] coins, int amount)
-    {
-        if(coins == null || coins.length == 0)
-            return -1;
-        if(amount == 0)
-            return 0;
-        
-        int[] dp = new int[amount+1];
-        for(int i = 1; i < dp.length; i++)
-            dp[i] = Integer.MAX_VALUE;
-        
-        for(int i = 1; i < dp.length; i++)
-        {
-            for(int coin : coins)
-                if(i - coin >= 0 && dp[i-coin] != Integer.MAX_VALUE)
-                    dp[i] = Math.min(dp[i-coin]+1, dp[i]);
-        }
-        
-        if(dp[amount] == Integer.MAX_VALUE)
-            return -1;
-        else
-            return dp[amount];
     }
 }
