@@ -1,3 +1,37 @@
+public class Solution {
+    public int minDistance(String word1, String word2) {
+        if (word1 == null || word1.length() == 0) {
+            return word2.length();
+        }
+        
+        if (word2 == null || word2.length() == 0) {
+            return word1.length();
+        }
+        
+        int m = word1.length();
+        int n = word2.length();
+        
+        int[][] dp = new int[m+1][n+1];
+        
+        
+        for (int i = 1; i < m+1; i++) {
+            for (int j = 1; j < n+1; j++) {
+                if (same(i-1, j-1, word1, word2)) {
+                    dp[i][j] = dp[i-1][j-1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+                }
+            }
+        }
+        
+        return dp[m][n];
+    }
+    
+    private boolean same(int i, int j, String word1, String word2) {
+        return word1.charAt(i) == word2.charAt(j);
+    }
+}
+
 /* 编辑距离，即给了字符串T1和字符串T2，试问通过插入、删除、替换等的操作，T1可以通过几步变换成T2？
 
 这道题首先还是动态规划解决，构建n*m矩阵，位置[i,j]标示串T1[0,i]和T2[0,j]的编辑距离。
