@@ -9,7 +9,6 @@ public class Solution {
         
         for (int i = row-2; i >= 0; i--) {
             dp[i][col-1] = Math.max(dp[i+1][col-1]-dungeon[i][col-1], 1);
-            
         }
         
         for (int j = col-2; j >= 0; j--) {
