@@ -1,4 +1,4 @@
-// DP
+// lintcode: DP
 public class Solution {
     /**
      * @param s: A string s
@@ -10,7 +10,6 @@ public class Solution {
         }
         
         int maxLength = getMaxLength(dict);
-        //System.out.println(maxLength);
         
         boolean[] dp = new boolean[s.length()+1];
         dp[0] = true;
@@ -36,6 +35,45 @@ public class Solution {
     private int getMaxLength(Set<String> dict) {
         int maxLength = 0;
         for (String word : dict) {
+            maxLength = Math.max(maxLength, word.length());
+        }
+        return maxLength;
+    }
+}
+
+// LeetCode: DP
+public class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if (s == null || s.length() == 0) {
+            return true;
+        }
+        
+        int maxLength = getMaxLength(wordDict);
+        
+        boolean[] dp = new boolean[s.length()+1];
+        dp[0] = true;
+        
+        for (int i = 1; i < dp.length; i++) {
+            for (int lastWordLength = 1;
+                     lastWordLength <= maxLength && lastWordLength <= i;
+                     lastWordLength++) {
+                if (!dp[i - lastWordLength]) {
+                    continue;
+                }
+                String word = s.substring(i - lastWordLength, i);
+                if (wordDict.contains(word)) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        
+        return dp[s.length()];
+    }
+    
+    private int getMaxLength(List<String> wordDict) {
+        int maxLength = 0;
+        for (String word : wordDict) {
             maxLength = Math.max(maxLength, word.length());
         }
         return maxLength;
