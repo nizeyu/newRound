@@ -9,20 +9,13 @@ public class Solution {
         dp[0] = 1;
         
         for (int i = 1; i < dp.length; i++) {
-            int max = 1;
-            boolean flag = false;
+            int max = 0;
             for(int j = i-1; j >= 0; j--) {
                 if (nums[i] > nums[j]) {
                     max = Math.max(dp[j], max);
-                    flag = true;
                 }
             }
-            
-            if (flag) {
-                dp[i] = max + 1;
-            } else {
-                dp[i] = 1;
-            }
+            dp[i] = max + 1;
         }
         
         int max = Integer.MIN_VALUE;
