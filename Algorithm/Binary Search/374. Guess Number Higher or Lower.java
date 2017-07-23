@@ -1,4 +1,4 @@
-//My Solution: new
+//Self: lowerBound
 /* The guess API is defined in the parent class GuessGame.
    @param num, your guess
    @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
@@ -6,20 +6,26 @@
 
 public class Solution extends GuessGame {
     public int guessNumber(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        
         int l = 1;
         int r = n;
-        while(l < r) {
-            int mid = l + (r - l) / 2;
+        
+        while (l < r) {
+            int m = l + (r - l) / 2;
             
-            if(guess(mid) <= 0)
-                r = mid;
-            else
-                l = mid + 1;
+            if (guess(m) <= 0) {
+                r = m;
+            } else {
+                l = m + 1;
+            }
         }
+        
         return l;
     }
 }
-
 //My Solution: old
 /* The guess API is defined in the parent class GuessGame.
    @param num, your guess
