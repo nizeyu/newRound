@@ -7,7 +7,6 @@ public class Solution {
                 return new int[]{i+1, index+1};
             }
         }
-        
         return new int[]{-1, -1};
     }
     
@@ -24,7 +23,6 @@ public class Solution {
                 l = mid + 1;
             }
         } 
-
-	    return l;
+	return l;
     }
 }
