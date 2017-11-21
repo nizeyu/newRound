@@ -51,3 +51,24 @@ public class Solution {
         return l;
     }
 }
+
+// Binary Search
+class Solution {
+    public int findDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        
+        int l = 0;
+        int r = nums.length;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            
+            if (mid + 1 <= nums[mid]) {
+                l = mid + 1;
+            } else {
+                r = mid;
+            }
+        }
+        return l; 
+    }
+}
+
